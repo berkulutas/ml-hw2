@@ -2,7 +2,7 @@ import pickle
 from Distance import Distance
 from Knn import KNN
 
-from sklearn.model_selection import StratifiedKFold
+from sklearn.model_selection import StratifiedKFold # TODO questoin? can we import this
 
 # the data is already preprocessed
 dataset, labels = pickle.load(open("../datasets/part1_dataset.data", "rb"))
@@ -47,11 +47,12 @@ for k in hyperparameter_configs["k"]:
                 accuracies.append(correct/len(test))
         # calculate mean and confidence interval
         lower, upper, mean = calculate_conf_interval_mean(accuracies)
+        # TODO better reporting
         print(f"K: {k}, Distance Function: {distance_fn.__name__}, Accuracy: {mean}, Confidence Interval: [{lower}, {upper}]")
         if mean > best_accuracy:
             best_accuracy = mean
             best_hyperparameters = curr_config
-
+# TODO better reporting
 print(f'Best Hyperparameters:\nDistance Function: {best_hyperparameters["distance_fn"].__name__}, K: {best_hyperparameters["k"]}\nBest Accuracy: {best_accuracy}')
 
 # test the best hyperparameters on the test data
@@ -61,6 +62,6 @@ for i in range(len(test_data)):
     if knn.predict(test_data[i]) == test_labels[i]:
         correct += 1
 print(f"Test Accuracy: {correct/len(test_data)}")
-        
+        # TODO better reporting
 
 
