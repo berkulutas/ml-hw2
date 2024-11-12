@@ -15,7 +15,7 @@ class KNN:
         self.similarity_function = similarity_function
         self.similarity_function_parameters = similarity_function_parameters
 
-        if self.similarity_function == "calculateMahalanobisDistance":
+        if self.similarity_function.__name__ == "calculateMahalanobisDistance":
             self.similarity_function_parameters = np.linalg.inv(np.cov(self.dataset.T))
 
     def predict(self, instance):

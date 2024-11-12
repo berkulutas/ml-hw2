@@ -1,5 +1,5 @@
 import numpy as np
-from Distance import Distance
+from Part1.Distance import Distance
 
 x = np.array([1,2,3])
 y = np.array([4,5,6])
