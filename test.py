@@ -7,16 +7,13 @@ y = np.array([4,5,6])
 # print(np.sqrt(np.sum((x - y) ** 2)))
 # print(np.linalg.norm(x - y))
 
-def other (x,y, p=2):
-    return np.linalg.norm(x - y, ord=p) 
+# def other (x,y, p=2):
+#     return np.linalg.norm(x - y, ord=p) 
+# print(other(x,y), Distance.calculateMinkowskiDistance(x,y))
+# print(Distance.calculateMahalanobisDistance(x,y, np.eye(3)))
+# print(Distance.calculateCosineDistance(x,y))    
 
 
-
-
-
-print(other(x,y), Distance.calculateMinkowskiDistance(x,y))
-
-
-
-print(Distance.calculateMahalanobisDistance(x,y, np.eye(3)))
-print(Distance.calculateCosineDistance(x,y))    
+ll = [(31,2), (33,100), (1,1)]
+ll.sort(key= lambda y: -y[0])
+print(ll)

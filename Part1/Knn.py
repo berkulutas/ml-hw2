@@ -14,6 +14,23 @@ class KNN:
         self.similarity_function_parameters = similarity_function_parameters
 
     def predict(self, instance):
-        pass
+        # calculate distance between instance and all dataset
+        distances = []
+        for i in range(len(self.dataset)):
+            distances.append(self.similarity_function(instance, self.dataset[i], self.similarity_function_parameters))
+        
+        # merge distances and labels
+        distances = list(zip(distances, self.dataset_label))
+
+        # sort distance and get the first K
+        distances.sort(key= lambda x: x[0])
+        distances = distances[:self.K]
+
+        # get the most common label
+        d = {}
+        for _, label in distances:
+            d[label] = d.get(label, 0) + 1
+        
+        return max(d, key=d.get)
 
 
