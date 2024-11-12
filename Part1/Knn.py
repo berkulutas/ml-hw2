@@ -1,3 +1,5 @@
+import numpy as np
+
 class KNN:
     def __init__(self, dataset, data_label, similarity_function, similarity_function_parameters=None, K=1):
         """
@@ -13,11 +15,18 @@ class KNN:
         self.similarity_function = similarity_function
         self.similarity_function_parameters = similarity_function_parameters
 
+        if self.similarity_function == "calculateMahalanobisDistance":
+            self.similarity_function_parameters = np.linalg.inv(np.cov(self.dataset.T))
+
     def predict(self, instance):
         # calculate distance between instance and all dataset
         distances = []
-        for i in range(len(self.dataset)):
-            distances.append(self.similarity_function(instance, self.dataset[i], self.similarity_function_parameters))
+        if self.similarity_function_parameters is None:
+            for i in range(len(self.dataset)):
+                distances.append(self.similarity_function(instance, self.dataset[i]))
+        else:
+            for i in range(len(self.dataset)):
+                distances.append(self.similarity_function(instance, self.dataset[i], self.similarity_function_parameters))
         
         # merge distances and labels
         distances = list(zip(distances, self.dataset_label))

@@ -14,6 +14,11 @@ y = np.array([4,5,6])
 # print(Distance.calculateCosineDistance(x,y))    
 
 
-ll = [(31,2), (33,100), (1,1)]
-ll.sort(key= lambda y: -y[0])
-print(ll)
+# ll = [(31,2), (33,100), (1,1)]
+# ll.sort(key= lambda y: -y[0])
+# print(ll)
+
+funs = [Distance.calculateCosineDistance, Distance.calculateMinkowskiDistance, Distance.calculateMahalanobisDistance]
+Sminus1 = np.eye(3)
+for fun in funs:
+    print(fun(x,y, Sminus1))
