@@ -13,7 +13,7 @@ iterations = 5
 fold_num = 10
 hyperparameter_configs = {
     "k": [3, 5, 10, 30, 50], # Typically, K values of 5, 10, or 30 are considered.
-    "distance_fn": [Distance.calculateCosineDistance, Distance.calculateMinkowskiDistance, Distance.calculateMahalanobisDistance] # TODO minkowski with different p parameters
+    "distance_fn": [Distance.calculateCosineDistance, Distance.calculateMinkowskiDistance(p=2), Distance.calculateMinkowskiDistance(p=3), Distance.calculateMahalanobisDistance], # TODO minkowski with different p parameters
 }
 train_test_split = 0.8
 
