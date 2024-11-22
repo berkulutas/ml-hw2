@@ -42,7 +42,7 @@ def save_plot(title, xlabel, ylabel , xs, ys):
     plt.plot(xs, ys)
     plt.grid()
     plt.savefig(f'plots/{title}') # TODO remove plots save location for grading
-
+    plt.close()
 
 def calc_loss(dataset, k_range):
     avg_losses = []
