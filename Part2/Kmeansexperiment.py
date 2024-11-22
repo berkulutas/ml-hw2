@@ -6,3 +6,14 @@ from sklearn.cluster import KMeans
 # The datasets are already preprocessed...
 dataset1 = pickle.load(open("../datasets/part2_dataset_1.data", "rb"))
 dataset2 = pickle.load(open("../datasets/part2_dataset_2.data", "rb"))
+
+k_range = range(2,11)
+
+losses = []
+for k in k_range:
+    km = KMeans(n_clusters=k)
+    km.fit(dataset1)
+    losses.append(km.inertia_)
+
+plt.plot(k_range, losses)
+plt.savefig('test')
