@@ -44,7 +44,7 @@ def save_plot(title, xlabel, ylabel , xs, ys):
     plt.savefig(f'plots/{title}') # TODO remove plots save location for grading
 
 
-def calc_kmeans(dataset, k_range):
+def calc_loss(dataset, k_range):
     avg_losses = []
     loss_conf_intervals = []
 
@@ -60,8 +60,13 @@ def calc_kmeans(dataset, k_range):
 
     return avg_losses
 
-# plot
+# ploting
 k_range = range(2,11)
-print("Running K means elbow method for Dataset 1")
-ds1_y = calc_kmeans(dataset1, k_range)
+
+print("Running K means loss method for Dataset 1")
+ds1_y = calc_loss(dataset1, k_range)
 save_plot("K vs Loss on Dataset 1", "Number of Clusters (K)", "Average Loss", k_range, ds1_y)
+
+print("Running K means loss method for Dataset 2")
+ds2_y = calc_loss(dataset2, k_range)
+save_plot("K vs Loss on Dataset 2", "Number of Clusters (K)", "Average Loss", k_range, ds2_y)
