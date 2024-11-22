@@ -13,7 +13,7 @@ iterations = 5
 fold_num = 10
 hyperparameter_configs = {
     "k": [3, 5, 10, 30, 50], # Typically, K values of 5, 10, or 30 are considered.
-    "distance_fn": [Distance.calculateCosineDistance, Distance.calculateMinkowskiDistance(p=2), Distance.calculateMinkowskiDistance(p=3), Distance.calculateMahalanobisDistance], # TODO minkowski with different p parameters
+    "distance_fn_tuple": [("Cosine", Distance.calculateCosineDistance), ("Minkowski (p=2)", Distance.calculateMinkowskiDistance(p=2)), ("Minkowski (p=3)", Distance.calculateMinkowskiDistance(p=3)), ("Mahalanobis", Distance.calculateMahalanobisDistance)], # TODO minkowski with different p parameters
 }
 train_test_split = 0.8
 
@@ -41,9 +41,10 @@ best_hyperparameters = None
 best_accuracy = 0
 
 for k in hyperparameter_configs["k"]:
-    for distance_fn in hyperparameter_configs["distance_fn"]:
+    for distance_fn_tuple in hyperparameter_configs["distance_fn_tuple"]:
+        distance_fn_name, distance_fn = distance_fn_tuple
         accuracies = []
-        curr_config = {"k": k, "distance_fn": distance_fn}
+        curr_config = {"k": k, "distance_fn_tuple": distance_fn_tuple}
         # iterate 5 times for statistical significance
         for _ in range(iterations):
             # stratified k-fold
@@ -58,15 +59,15 @@ for k in hyperparameter_configs["k"]:
         # calculate mean and confidence interval
         lower, upper, mean = calculate_conf_interval_mean(accuracies)
         # TODO better reporting
-        print(f"K: {k}, Distance Function: {distance_fn.__name__}, Accuracy: {mean}, Confidence Interval: [{lower}, {upper}]")
+        print(f"K: {k}, Distance Function: {distance_fn_name}, Accuracy: {mean}, Confidence Interval: [{lower}, {upper}]")
         if mean > best_accuracy:
             best_accuracy = mean
             best_hyperparameters = curr_config
 # TODO better reporting
-print(f'Best Hyperparameters:\nDistance Function: {best_hyperparameters["distance_fn"].__name__}, K: {best_hyperparameters["k"]}\nBest Accuracy: {best_accuracy}')
+print(f'Best Hyperparameters:\nDistance Function: {best_hyperparameters["distance_fn_tuple"][0]}, K: {best_hyperparameters["k"]}\nBest Accuracy: {best_accuracy}')
 
 # test the best hyperparameters on the test data
-knn = KNN(train_data, train_labels, best_hyperparameters["distance_fn"], K=best_hyperparameters["k"])
+knn = KNN(train_data, train_labels, best_hyperparameters["distance_fn_tuple"][1], K=best_hyperparameters["k"])
 correct = 0
 for i in range(len(test_data)):
     if knn.predict(test_data[i]) == test_labels[i]:
