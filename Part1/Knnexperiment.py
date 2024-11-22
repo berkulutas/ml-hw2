@@ -4,6 +4,8 @@ from Knn import KNN
 
 from sklearn.model_selection import StratifiedKFold # TODO questoin? can we import this
 
+import random # TODO question? can we import this
+
 # the data is already preprocessed
 dataset, labels = pickle.load(open("../datasets/part1_dataset.data", "rb"))
 
@@ -11,8 +13,9 @@ iterations = 5
 fold_num = 10
 hyperparameter_configs = {
     "k": [3, 5, 10, 30, 50], # Typically, K values of 5, 10, or 30 are considered.
-    "distance_fn": [Distance.calculateCosineDistance, Distance.calculateMinkowskiDistance, Distance.calculateMahalanobisDistance]
+    "distance_fn": [Distance.calculateCosineDistance, Distance.calculateMinkowskiDistance, Distance.calculateMahalanobisDistance] # TODO minkowski with different p parameters
 }
+train_test_split = 0.8
 
 def calculate_conf_interval_mean(data):
     mean = sum(data) / len(data)
@@ -22,10 +25,17 @@ def calculate_conf_interval_mean(data):
     margin_of_error = 1.96 * std_error
     return round(mean - margin_of_error, 3), round(mean + margin_of_error,3 ), round(mean,3)
 
+# shuffle the data
+indices = list(range(len(dataset)))
+random.seed(31)
+random.shuffle(indices)
+dataset = dataset[indices]
+labels = labels[indices]
 
-# split train and test data 
-train_data, train_labels = (dataset[:int(len(dataset)*0.8)], labels[:int(len(dataset)*0.8)])
-test_data, test_labels =   (dataset[int(len(dataset)*0.8):], labels[int(len(dataset)*0.8):])
+# split train and test data
+split_index = int(len(dataset)*train_test_split)
+train_data, train_labels = (dataset[:split_index], labels[:split_index])
+test_data, test_labels =   (dataset[split_index:], labels[split_index:])
 
 best_hyperparameters = None
 best_accuracy = 0
@@ -63,5 +73,3 @@ for i in range(len(test_data)):
         correct += 1
 print(f"Test Accuracy: {correct/len(test_data)}")
         # TODO better reporting
-
-
