@@ -9,93 +9,111 @@ from sklearn.metrics import silhouette_score
 dataset1 = pickle.load(open("../datasets/part2_dataset_1.data", "rb"))
 dataset2 = pickle.load(open("../datasets/part2_dataset_2.data", "rb"))
 
-km = KMedoids(n_clusters=2)
+# TODO remove old dataset
+# dataset1 = pickle.load(open("../data2023/part2_dataset_1.data", "rb"))
+# dataset2 = pickle.load(open("../data2023/part2_dataset_2.data", "rb"))
 
-# TIMES = 3 # TODO make it 10
+TIMES = 10 # TODO make it 10
 
-# def calc_confidence_interval(data):
-#     mean = np.mean(data)
-#     std = np.std(data)
-#     n = len(data)
-#     h = 1.96 * std / np.sqrt(n)
-#     return (mean - h), (mean + h)
+def calc_confidence_interval(data):
+    mean = np.mean(data)
+    std = np.std(data)
+    n = len(data)
+    h = 1.96 * std / np.sqrt(n)
+    return (mean - h), (mean + h)
 
-# def get_min_kmedoids_loss(dataset, k):
-#     min_loss = np.inf
+def get_min_kmedoids_loss(dataset, k):
+    min_loss = np.inf
 
-#     for _ in range(TIMES):
-#         km = KMedoids(n_clusters=k)
-#         km.fit(dataset)
-#         min_loss = min(min_loss, km.inertia_)
+    for _ in range(TIMES):
+        km = KMedoids(n_clusters=k)
+        km.fit(dataset)
+        min_loss = min(min_loss, km.inertia_)
     
-#     return min_loss
+    return min_loss
 
-# def calc_avg_kmedoids_loss(dataset, k):
-#     losses = []
+def calc_avg_kmedoids_loss(dataset, k):
+    losses = []
 
-#     for _ in range(TIMES):
-#         losses.append(get_min_kmedoids_loss(dataset, k))
+    for _ in range(TIMES):
+        losses.append(get_min_kmedoids_loss(dataset, k))
 
-#     return np.mean(losses), calc_confidence_interval(losses)
+    return np.mean(losses), calc_confidence_interval(losses)
 
-# def get_min_silhouette_score(dataset, k):
-#     min_ss = np.inf
+def get_avg_silhouette_score(dataset, k):
+    sscores = [] 
 
-#     for _ in range(TIMES):
-#         km = KMedoids(n_clusters=k)
-#         y_pred = km.fit_predict(dataset)
-#         min_ss = min(min_ss, silhouette_score(dataset, y_pred))
+    for _ in range(TIMES):
+        km = KMedoids(n_clusters=k)
+        y_pred = km.fit_predict(dataset)
+        sscores.append(silhouette_score(dataset, y_pred))
+
+    return np.mean(sscores)
+
+def calc_avg_silhouette_loss(dataset, k):
+    scores = []
+
+    for _ in range(TIMES):
+        scores.append(get_avg_silhouette_score(dataset, k))
     
-#     return min_ss
+    return np.mean(scores), calc_confidence_interval(scores)
 
-# def calc_avg_silhouette_loss(dataset, k):
-#     scores = []
-
-#     for _ in range(TIMES):
-#         scores.append(get_min_silhouette_score(dataset, k))
+def calc_loss(dataset, k_range):
+    avg_losses = []
+    loss_conf_intervals = []
     
-#     return np.mean(scores), calc_confidence_interval(scores)
+    for k in k_range:
+        print(f"Running K medoids Loss for k = {k}")
+        avg_loss, conf_int = calc_avg_kmedoids_loss(dataset, k)
+        avg_losses.append(avg_loss)
+        loss_conf_intervals.append(conf_int)
 
-# def calc_loss(dataset, k_range):
-#     avg_losses = []
-#     loss_conf_intervals = []
-#     avg_silhouette_scores = []
-#     silhouette_conf_intervals = []
+        # report results
+        # TODO better reporting to a csv file
+        print(f"Average Loss = {round(avg_loss,3)}, Confidence Interval = {round(float(conf_int[0]),3), round(float(conf_int[1]),3)}")
 
-#     for k in k_range:
-#         avg_loss, loss_conf_interval = calc_avg_kmedoids_loss(dataset, k)
-#         avg_losses.append(avg_loss)
-#         loss_conf_intervals.append(loss_conf_interval)
+    return avg_losses
 
-#         avg_silhouette_score, silhouette_conf_interval = calc_avg_silhouette_loss(dataset, k)
-#         avg_silhouette_scores.append(avg_silhouette_score)
-#         silhouette_conf_intervals.append(silhouette_conf_interval)
-    
-#     return avg_losses, loss_conf_intervals, avg_silhouette_scores, silhouette_conf_intervals
+def calc_silhouette_score(dataset, k):
+    avg_scores = []
+    score_conf_intervals = []
 
-# k_range = range(2, 11)
-# avg_losses1, loss_conf_intervals1, avg_silhouette_scores1, silhouette_conf_intervals1 = calc_loss(dataset1, k_range)
-# avg_losses2, loss_conf_intervals2, avg_silhouette_scores2, silhouette_conf_intervals2 = calc_loss(dataset2, k_range)
+    for k in k_range:
+        print(f"Running K medoids Silhouette score for k = {k}")
+        avg_score, conf_int = calc_avg_silhouette_loss(dataset, k)
+        avg_scores.append(avg_score)
+        score_conf_intervals.append(conf_int)
 
-# plt.figure()
-# plt.errorbar(k_range, avg_losses1, yerr=np.array(loss_conf_intervals1).T)
-# plt.errorbar(k_range, avg_losses2, yerr=np.array(loss_conf_intervals2).T)
-# plt.xlabel("Number of clusters")
-# plt.ylabel("Loss")
-# plt.title("KMedoids Loss")
-# plt.legend(["Dataset 1", "Dataset 2"])
-# plt.savefig("KMedoids_loss.png")
+        # report results
+        # TODO better reporting to a csv file
+        print(f"Average Silhouette Score = {round(avg_score,3)}, Confidence Interval = {round(float(conf_int[0]),3), round(float(conf_int[1]),3)}")
 
-# plt.figure()
-# plt.errorbar(k_range, avg_silhouette_scores1, yerr=np.array(silhouette_conf_intervals1).T)
-# plt.errorbar(k_range, avg_silhouette_scores2, yerr=np.array(silhouette_conf_intervals2).T)
-# plt.xlabel("Number of clusters")
-# plt.ylabel("Silhouette Score")
-# plt.title("KMedoids Silhouette Score")
-# plt.legend(["Dataset 1", "Dataset 2"])
-# plt.savefig("KMedoids_silhouette_score.png")
-# # save_plot("KMedoids Loss", "Number of clusters", "Loss", k_range, avg_losses1)
-# # save_plot("KMedoids Loss", "Number of clusters", "Loss", k_range, avg_losses2)
-# # save_plot("KMedoids Silhouette Score", "Number of clusters", "Silhouette Score", k_range, avg_silhouette_scores1)
-# # save_plot("KMedoids Silhouette Score", "Number of clusters", "Silhouette Score", k_range, avg_silhouette_scores2)
+    return avg_scores
 
+def save_plot(title, xlabel, ylabel , xs, ys):
+    plt.title(title)
+    plt.xlabel(xlabel)
+    plt.ylabel(ylabel)
+    plt.plot(xs, ys)
+    plt.grid()
+    plt.savefig(f'plots/{title}') # TODO remove plots save location for grading
+    plt.close()
+
+# ploting
+k_range = range(2, 11)
+
+print("Running K medoids loss method for Dataset 1")
+ds1_yl = calc_loss(dataset1, k_range)
+save_plot("K medoids K vs Loss on Dataset 1", "Number of Clusters (K)", "Average Loss", k_range, ds1_yl)
+
+print("Running K medoids loss method for Dataset 2")
+ds2_yl = calc_loss(dataset2, k_range)
+save_plot("K medoids K vs Loss on Dataset 2", "Number of Clusters (K)", "Average Loss", k_range, ds2_yl)
+
+print("Running K medoids Silhouette score method for Dataset 1")
+ds1_ys = calc_silhouette_score(dataset1, k_range)
+save_plot("K medoids K vs Silhouette Score on Dataset 1", "Number of Clusters (K)", "Average Silhouette Score", k_range, ds1_ys)
+
+print("Running K medoids Silhouette score method for Dataset 2")
+ds2_ys = calc_silhouette_score(dataset2, k_range)
+save_plot("K medoids K vs Silhouette Score on Dataset 2", "Number of Clusters (K)", "Average Silhouette Score", k_range, ds2_ys)
