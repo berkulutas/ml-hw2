@@ -9,6 +9,10 @@ from sklearn.metrics import silhouette_score
 dataset1 = pickle.load(open("../datasets/part2_dataset_1.data", "rb"))
 dataset2 = pickle.load(open("../datasets/part2_dataset_2.data", "rb"))
 
+# TODO remove old dataset
+# dataset1 = pickle.load(open("../data2023/part2_dataset_1.data", "rb"))
+# dataset2 = pickle.load(open("../data2023/part2_dataset_2.data", "rb"))
+
 TIMES = 3 # TODO make it 10
 
 def calc_confidence_interval(data):
@@ -36,21 +40,21 @@ def calc_avg_kmeans_loss(dataset, k):
 
     return np.mean(losses), calc_confidence_interval(losses)
 
-def get_min_silhouette_score(dataset, k):
-    min_ss = np.inf
+def get_avg_silhouette_score(dataset, k):
+    sscores = [] 
 
     for _ in range(TIMES):
         km = KMeans(n_clusters=k)
         y_pred = km.fit_predict(dataset)
-        min_ss = min(min_ss, silhouette_score(dataset, y_pred))
+        sscores.append(silhouette_score(dataset, y_pred))
 
-    return min_ss
+    return np.mean(sscores)
 
 def calc_avg_silhouette_loss(dataset, k):
     scores = []
 
     for _ in range(TIMES):
-        scores.append(get_min_silhouette_score(dataset, k))
+        scores.append(get_avg_silhouette_score(dataset, k))
     
     return np.mean(scores), calc_confidence_interval(scores)
 
