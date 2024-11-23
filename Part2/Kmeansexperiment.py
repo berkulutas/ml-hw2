@@ -3,6 +3,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
 
+from sklearn.metrics import silhouette_score
+
 # The datasets are already preprocessed...
 dataset1 = pickle.load(open("../datasets/part2_dataset_1.data", "rb"))
 dataset2 = pickle.load(open("../datasets/part2_dataset_2.data", "rb"))
@@ -34,22 +36,30 @@ def calc_avg_kmeans_loss(dataset, k):
 
     return np.mean(losses), calc_confidence_interval(losses)
 
+def get_min_silhouette_score(dataset, k):
+    min_ss = np.inf
 
-def save_plot(title, xlabel, ylabel , xs, ys):
-    plt.title(title)
-    plt.xlabel(xlabel)
-    plt.ylabel(ylabel)
-    plt.plot(xs, ys)
-    plt.grid()
-    plt.savefig(f'plots/{title}') # TODO remove plots save location for grading
-    plt.close()
+    for _ in range(TIMES):
+        km = KMeans(n_clusters=k)
+        y_pred = km.fit_predict(dataset)
+        min_ss = min(min_ss, silhouette_score(dataset, y_pred))
+
+    return min_ss
+
+def calc_avg_silhouette_loss(dataset, k):
+    scores = []
+
+    for _ in range(TIMES):
+        scores.append(get_min_silhouette_score(dataset, k))
+    
+    return np.mean(scores), calc_confidence_interval(scores)
 
 def calc_loss(dataset, k_range):
     avg_losses = []
     loss_conf_intervals = []
 
     for k in k_range:
-        print(f"Running K means for k = {k}")
+        print(f"Running K means Loss for k = {k}")
         avg_loss, conf_int = calc_avg_kmeans_loss(dataset, k)
         avg_losses.append(avg_loss)
         loss_conf_intervals.append(conf_int)
@@ -60,13 +70,47 @@ def calc_loss(dataset, k_range):
 
     return avg_losses
 
+def calc_silhouette_score(dataset, k_range):
+    avg_scores = []
+    score_conf_intervals = []
+
+    for k in k_range:
+        print(f"Running K means Silhouette score for k = {k}")
+        avg_score, conf_int = calc_avg_silhouette_loss(dataset, k)
+        avg_scores.append(avg_score)
+        score_conf_intervals.append(conf_int)
+
+        # report results
+        # TODO better reporting to a csv file
+        print(f"Average Silhouette Score = {round(avg_score,3)}, Confidence Interval = {round(float(conf_int[0]),3), round(float(conf_int[1]),3)}")
+
+    return avg_scores
+
+def save_plot(title, xlabel, ylabel , xs, ys):
+    plt.title(title)
+    plt.xlabel(xlabel)
+    plt.ylabel(ylabel)
+    plt.plot(xs, ys)
+    plt.grid()
+    plt.savefig(f'plots/{title}') # TODO remove plots save location for grading
+    plt.close()
+
 # ploting
 k_range = range(2,11)
 
 print("Running K means loss method for Dataset 1")
-ds1_y = calc_loss(dataset1, k_range)
-save_plot("K vs Loss on Dataset 1", "Number of Clusters (K)", "Average Loss", k_range, ds1_y)
+ds1_yl = calc_loss(dataset1, k_range)
+save_plot("K Means K vs Loss on Dataset 1", "Number of Clusters (K)", "Average Loss", k_range, ds1_yl)
 
 print("Running K means loss method for Dataset 2")
-ds2_y = calc_loss(dataset2, k_range)
-save_plot("K vs Loss on Dataset 2", "Number of Clusters (K)", "Average Loss", k_range, ds2_y)
+ds2_yl = calc_loss(dataset2, k_range)
+save_plot("K Means K vs Loss on Dataset 2", "Number of Clusters (K)", "Average Loss", k_range, ds2_yl)
+
+print("Running K means Silhouette score method for Dataset 1")
+ds1_ys = calc_silhouette_score(dataset1, k_range)
+save_plot("K Means K vs Silhouette Score on Dataset 1", "Number of Clusters (K)", "Average Silhouette Score", k_range, ds1_ys)
+
+print("Running K means Silhouette score method for Dataset 2")
+ds2_ys = calc_silhouette_score(dataset2, k_range)
+save_plot("K Means K vs Silhouette Score on Dataset 2", "Number of Clusters (K)", "Average Silhouette Score", k_range, ds2_ys)
+
