@@ -24,14 +24,14 @@ class PCA:
         # center columns by subtracting column means
         centered_data = x - self.mean
         # calculate covariance matrix of centered matrix
-        covariance_matrix = np.cov(centered_data.T)
+        covariance_matrix = np.cov(centered_data.T) # since np.cov expects features as rows
         # eigenvector and eigenvalues
         eig_values, eig_vectors = np.linalg.eig(covariance_matrix)
 
         # sort eigenvectors based on eigenvalues
-        idx = eig_values.argsort()[::-1]
+        idx = eig_values.argsort()[::-1] # descending order
         eig_values = eig_values[idx]
-        eig_vectors = eig_vectors[:, idx]
+        eig_vectors = eig_vectors[:, idx] # sinece eigenvectors are column wise
 
         # select the first k eigenvectors
         self.projection_matrix = eig_vectors[:, :self.projection_dim]
@@ -48,11 +48,10 @@ class PCA:
         # center columns by subtracting column means
         centered_data = x - self.mean
         # project data
-        return centered_data.dot(self.projection_matrix)
+        return np.dot(centered_data, self.projection_matrix)
     
 
 # test the implementation
-
 if __name__ == '__main__':
     import matplotlib.pyplot as plt
     from sklearn.datasets import load_iris
