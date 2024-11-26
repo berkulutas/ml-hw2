@@ -32,6 +32,8 @@ class PCA:
         idx = eig_values.argsort()[::-1] # descending order
         eig_values = eig_values[idx]
         eig_vectors = eig_vectors[:, idx] # sinece eigenvectors are column wise
+        eig_values = eig_values.real
+        eig_vectors = eig_vectors.real
 
         # select the first k eigenvectors
         self.projection_matrix = eig_vectors[:, :self.projection_dim]
