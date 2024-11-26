@@ -40,21 +40,21 @@ def calc_avg_kmedoids_loss(dataset, k):
 
     return np.mean(losses), calc_confidence_interval(losses)
 
-def get_avg_silhouette_score(dataset, k):
-    sscores = [] 
+def get_max_silhouette_score(dataset, k):
+    max_ss = np.NINF
 
     for _ in range(TIMES):
         km = KMedoids(n_clusters=k)
         y_pred = km.fit_predict(dataset)
-        sscores.append(silhouette_score(dataset, y_pred))
+        max_ss = max(max_ss, silhouette_score(dataset, y_pred))
 
-    return np.mean(sscores)
+    return max_ss
 
 def calc_avg_silhouette_loss(dataset, k):
     scores = []
 
     for _ in range(TIMES):
-        scores.append(get_avg_silhouette_score(dataset, k))
+        scores.append(get_max_silhouette_score(dataset, k))
     
     return np.mean(scores), calc_confidence_interval(scores)
 
