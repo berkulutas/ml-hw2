@@ -52,7 +52,7 @@ class AutoEncoderNetwork(nn.Module):
 
 class AutoEncoder:
 
-    def __init__(self, input_dim: int, projection_dim: int, learning_rate: float = 0.001, iteration_count: int = 1000):
+    def __init__(self, input_dim: int, projection_dim: int, learning_rate: float = 0.01, iteration_count: int = 500):
         """
         Initializes the Auto Encoder method
         :param input_dim: the input data space dimensionality
@@ -111,6 +111,11 @@ class AutoEncoder:
         # project data but no need to calculate gradients
         with torch.no_grad():
             return self.autoencoder_model.project(x)
+        
+    def fit_transform(self, x: torch.Tensor) -> torch.Tensor:
+        # train the model and return the transformed data
+        self.fit(x)
+        return self.transform(x)
     
 
 # test the implementation
