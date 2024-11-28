@@ -26,10 +26,7 @@ def hac_and_silhouette(dataset, linkage_method, distance_metric, k_vals):
         # hac clustering
         # fix labels_ https://stackoverflow.com/questions/61362625/agglomerativeclustering-no-attribute-called-distances
         model = AgglomerativeClustering(linkage=linkage_method, metric=distance_metric, n_clusters=k, compute_distances=True) # compute_distances for fix labels_
-        model.fit(dataset)
-        labels = model.labels_
-        # labels = model.fit_predict(dataset)
-        print(model.distances_)
+        labels = model.fit_predict(dataset)
 
         # silhouette analysis
         score = silhouette_score(dataset, labels)
@@ -46,9 +43,11 @@ def hac_and_silhouette(dataset, linkage_method, distance_metric, k_vals):
         
     # plot dendrogram
     plt.figure(figsize=(10, 7))
-    plt.title(f"Dendrogram for HAC with linkage method: {linkage_method}, distance metric: {distance_metric}")
-    plot_dendrogram(best_model)
-    plt.show()
+    title = f"Dendrogram for HAC (Linkage Method: {linkage_method}, Distance Metric: {distance_metric}, K: {best_k})"
+    plt.title(title)
+    plot_dendrogram(best_model, truncate_mode='level', p=best_k)
+    plt.savefig(f'plots/{title}.png')
+    plt.close()
 
     plot_silhouette(k_vals, silhouette_scores, linkage_method, distance_metric)
     
@@ -57,11 +56,14 @@ def hac_and_silhouette(dataset, linkage_method, distance_metric, k_vals):
 
 # plot silhoutte scores
 def plot_silhouette(k_vals, silhouette_scores, linkage_method, distance_metric):
+    plt.rcParams["figure.figsize"] = (10, 7)
     plt.plot(k_vals, silhouette_scores, marker='o')
-    plt.title(f"Silhouette Scores for HAC with linkage method: {linkage_method}, distance metric: {distance_metric}")
+    title = f"K vs Silhouette Scores for HAC (Linkage Method: {linkage_method}, Distance Metric: {distance_metric})"
+    plt.title(title)
     plt.xlabel("K")
     plt.ylabel("Silhouette Score")
-    plt.show()
+    plt.savefig(f'plots/{title}.png')
+    plt.close()
 
 
 # run hac clustering and silhouette analysis
@@ -107,4 +109,4 @@ def plot_dendrogram(model, **kwargs):
     dendrogram(linkage_matrix, **kwargs)
 
 
-test_hac(old_dataset)
+test_hac(dataset)
