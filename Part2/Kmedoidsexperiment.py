@@ -26,7 +26,7 @@ def get_min_kmedoids_loss(dataset, k):
     min_loss = np.inf
 
     for _ in range(TIMES):
-        km = KMedoids(n_clusters=k)
+        km = KMedoids(n_clusters=k, metric='cosine')
         km.fit(dataset)
         min_loss = min(min_loss, km.inertia_)
     
@@ -44,7 +44,7 @@ def get_max_silhouette_score(dataset, k):
     max_ss = np.NINF
 
     for _ in range(TIMES):
-        km = KMedoids(n_clusters=k)
+        km = KMedoids(n_clusters=k, metric='cosine')
         y_pred = km.fit_predict(dataset)
         max_ss = max(max_ss, silhouette_score(dataset, y_pred))
 
