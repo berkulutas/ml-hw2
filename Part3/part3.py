@@ -2,7 +2,7 @@ import pickle
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.cluster import AgglomerativeClustering
-from sklearn.metrics import silhouette_score
+from sklearn.metrics import silhouette_score, silhouette_samples
 from scipy.cluster.hierarchy import dendrogram
 
 from sklearn.cluster import DBSCAN
@@ -34,7 +34,7 @@ def hac_and_silhouette(dataset, linkage_method, distance_metric, k_vals):
         score = silhouette_score(dataset, labels)
         silhouette_scores.append(score)
 
-        print(f" k={k}, silhouette score={score}")
+        print(f" k={k}, silhouette score={score:.4f}")
 
         # keep track of the best k
         if score > best_score:
@@ -72,7 +72,7 @@ def plot_hac_silhouette(k_vals, silhouette_scores, linkage_method, distance_metr
 def test_hac(dataset):
     best_overall_score = -1
     best_overall_conf = None
-    k_vals = range(2,6)
+    k_vals = range(2,11)
 
     for linkage_method in ['single', 'complete']:
         for distance_metric in ['euclidean', 'cosine']:
@@ -82,7 +82,7 @@ def test_hac(dataset):
                 best_overall_score = score
                 best_overall_conf = (linkage_method, distance_metric, k, labels, silhouette_scores)
             
-            print(f"\nBest K for linkage method: {linkage_method}, distance metric: {distance_metric} is {k}")
+            print(f"\nBest K:{k}; for linkage method: {linkage_method}, distance metric: {distance_metric}")
 
     print(f"\nBest overall configuration: {best_overall_conf[0]}, {best_overall_conf[1]}, {best_overall_conf[2]}")
 
@@ -114,17 +114,72 @@ def plot_dendrogram(model, **kwargs):
 ##### DBSCAN #####
 
 # dbscan clustering and silhouette analysis
-def dbscan_and_silhouette():
-    pass
+def dbscan_and_silhouette(dataset, eps_vals, min_samples_vals, distance_metrics):
+    results = []
+
+    print("\nTesting DBSCAN with multiple configurations...")
+    for metric in distance_metrics:
+        for eps in eps_vals:
+            for min_samples in min_samples_vals:
+                print(f"testing DBSCAN (eps={eps:.2f}, min_samples={min_samples}, metric={metric}")
+                # apply dbscan
+                model = DBSCAN(eps=eps, min_samples=min_samples, metric=metric)
+                labels = model.fit_predict(dataset) # -1 for noise
+
+                # skip no cluster or noise
+                uniqe_labels = set(labels)
+                # print(uniqe_labels)
+                if (len(uniqe_labels) == 1) or (-1 in uniqe_labels and len(uniqe_labels) == 2):
+                    continue
+
+                # silhouette analysis
+                score = silhouette_score(dataset, labels) 
+                results.append((eps, min_samples, metric, score, labels, len(uniqe_labels)))
+                print(f"DBSCAN (eps={eps:.2f}, min_samples={min_samples}, metric={metric}, silhouette score={score:.4f}), unique labels count: {len(uniqe_labels)}")
+
+    return results
 
 # plot silhoutte scores
-def plot_dbscan_silhouette():
-    pass
+def plot_dbscan_silhouette(dataset, labels, eps, min_samples, metric, rank):
+    plt.rcParams["figure.figsize"] = (10, 7)
+    silhouette_vals = silhouette_samples(dataset, labels)
+    y_lower = 10
+    for i in range(len(set(labels))):
+        ith_cluster_silhouette_vals = silhouette_vals[labels == i]
+        ith_cluster_silhouette_vals.sort()
+        size_cluster_i = ith_cluster_silhouette_vals.shape[0]
+        y_upper = y_lower + size_cluster_i
+        color = plt.cm.nipy_spectral(float(i) / len(set(labels)))
+        plt.fill_betweenx(np.arange(y_lower, y_upper), 0, ith_cluster_silhouette_vals, facecolor=color, edgecolor=color, alpha=0.7)
+        plt.text(-0.05, y_lower + 0.5 * size_cluster_i, str(i))
+        y_lower = y_upper + 10
+
+    title = f"Silhouette Analysis for DBSCAN (eps={eps:.2f}, min_samples={min_samples}, metric={metric}, Rank {rank})"
+    plt.title(title)
+    plt.xlabel("Silhouette Coefficient Values")
+    plt.ylabel("Cluster label")
+    plt.axvline(x=np.mean(silhouette_vals), color="red", linestyle="--")
+    plt.savefig(f'plots/{title}.png')
+    plt.close()
 
 # run dbscan clustering and silhouette analysis
-def test_dbscan():
-    pass
+def test_dbscan(dataset):
+    # hyperparameters
+    eps_vals = [14, 15, 16, 17, 0.1, 0.12, 0.14, 0.16, 0.18, 0.2]
+    min_samples_vals = [2, 3, 4, 5]
+    distance_metrics = ['cosine', 'euclidean']
+
+    results = dbscan_and_silhouette(dataset, eps_vals, min_samples_vals, distance_metrics)
+
+    # sort results by silhouette score
+    results.sort(key=lambda x: x[3], reverse=True)
+    best_configs = enumerate(results[:4], start=1)
+
+    print("\nBest 4 configurations for DBSCAN:")
+    for rank, config in best_configs:
+        print(f"Rank {rank}: eps={config[0]:.2f}, min_samples={config[1]}, metric={config[2]}, silhouette score={config[3]:.4f}, K={config[5]}")
+        plot_dbscan_silhouette(dataset, config[4], config[0], config[1], config[2], rank)
 
 
-
-test_hac(old_dataset)
+test_hac(dataset)
+test_dbscan(dataset) 
