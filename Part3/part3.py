@@ -5,12 +5,14 @@ from sklearn.cluster import AgglomerativeClustering
 from sklearn.metrics import silhouette_score
 from scipy.cluster.hierarchy import dendrogram
 
+from sklearn.cluster import DBSCAN
 
 # The dataset is already preprocessed...
 dataset = pickle.load(open("../datasets/part3_dataset.data", "rb"))
 dataset2 = pickle.load(open("../datasets/part2_dataset_1.data", "rb")) # TODO remove this
 old_dataset = pickle.load(open("../data2023/part3_dataset.data", "rb")) # TODO remove this
 
+##### HAC #####
 
 # hac clustering and silhouette analysis
 def hac_and_silhouette(dataset, linkage_method, distance_metric, k_vals):
@@ -49,13 +51,13 @@ def hac_and_silhouette(dataset, linkage_method, distance_metric, k_vals):
     plt.savefig(f'plots/{title}.png')
     plt.close()
 
-    plot_silhouette(k_vals, silhouette_scores, linkage_method, distance_metric)
+    plot_hac_silhouette(k_vals, silhouette_scores, linkage_method, distance_metric)
     
 
     return best_score, best_k, best_labels, silhouette_scores
 
 # plot silhoutte scores
-def plot_silhouette(k_vals, silhouette_scores, linkage_method, distance_metric):
+def plot_hac_silhouette(k_vals, silhouette_scores, linkage_method, distance_metric):
     plt.rcParams["figure.figsize"] = (10, 7)
     plt.plot(k_vals, silhouette_scores, marker='o')
     title = f"K vs Silhouette Scores for HAC (Linkage Method: {linkage_method}, Distance Metric: {distance_metric})"
@@ -109,4 +111,20 @@ def plot_dendrogram(model, **kwargs):
     dendrogram(linkage_matrix, **kwargs)
 
 
-test_hac(dataset)
+##### DBSCAN #####
+
+# dbscan clustering and silhouette analysis
+def dbscan_and_silhouette():
+    pass
+
+# plot silhoutte scores
+def plot_dbscan_silhouette():
+    pass
+
+# run dbscan clustering and silhouette analysis
+def test_dbscan():
+    pass
+
+
+
+test_hac(old_dataset)
