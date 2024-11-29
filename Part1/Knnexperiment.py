@@ -2,9 +2,9 @@ import pickle
 from Distance import Distance
 from Knn import KNN
 
-from sklearn.model_selection import StratifiedKFold # TODO questoin? can we import this
+from sklearn.model_selection import StratifiedKFold
 
-import random # TODO question? can we import this
+import random
 
 # the data is already preprocessed
 dataset, labels = pickle.load(open("../datasets/part1_dataset.data", "rb"))
@@ -13,7 +13,7 @@ iterations = 5
 fold_num = 10
 hyperparameter_configs = {
     "k": [3, 5, 10, 30, 50], # Typically, K values of 5, 10, or 30 are considered.
-    "distance_fn_tuple": [("Cosine", Distance.calculateCosineDistance), ("Minkowski (p=2)", Distance.calculateMinkowskiDistance(p=2)), ("Minkowski (p=3)", Distance.calculateMinkowskiDistance(p=3)), ("Mahalanobis", Distance.calculateMahalanobisDistance)], # TODO minkowski with different p parameters
+    "distance_fn_tuple": [("Cosine", Distance.calculateCosineDistance), ("Minkowski (p=2)", Distance.calculateMinkowskiDistance(p=2)), ("Minkowski (p=3)", Distance.calculateMinkowskiDistance(p=3)), ("Mahalanobis", Distance.calculateMahalanobisDistance)]
 }
 train_test_split = 0.8
 
@@ -27,7 +27,6 @@ def calculate_conf_interval_mean(data):
 
 # shuffle the data
 indices = list(range(len(dataset)))
-random.seed(31)
 random.shuffle(indices)
 dataset = dataset[indices]
 labels = labels[indices]
@@ -58,12 +57,10 @@ for k in hyperparameter_configs["k"]:
                 accuracies.append(correct/len(test))
         # calculate mean and confidence interval
         lower, upper, mean = calculate_conf_interval_mean(accuracies)
-        # TODO better reporting
         print(f"K: {k}, Distance Function: {distance_fn_name}, Accuracy: {mean}, Confidence Interval: [{lower}, {upper}]")
         if mean > best_accuracy:
             best_accuracy = mean
             best_hyperparameters = curr_config
-# TODO better reporting
 print(f'Best Hyperparameters:\nDistance Function: {best_hyperparameters["distance_fn_tuple"][0]}, K: {best_hyperparameters["k"]}\nBest Accuracy: {best_accuracy}')
 
 # test the best hyperparameters on the test data
@@ -73,4 +70,3 @@ for i in range(len(test_data)):
     if knn.predict(test_data[i]) == test_labels[i]:
         correct += 1
 print(f"Test Accuracy: {correct/len(test_data)}")
-        # TODO better reporting
