@@ -1,0 +1,76 @@
+Running K medoids loss method for Dataset 1
+Running K medoids Loss for k = 2
+Average Loss = 376.845, Confidence Interval = (376.845, 376.845)
+Running K medoids Loss for k = 3
+Average Loss = 284.587, Confidence Interval = (284.587, 284.587)
+Running K medoids Loss for k = 4
+Average Loss = 184.493, Confidence Interval = (184.493, 184.493)
+Running K medoids Loss for k = 5
+Average Loss = 100.722, Confidence Interval = (100.722, 100.722)
+Running K medoids Loss for k = 6
+Average Loss = 19.453, Confidence Interval = (19.453, 19.453)
+Running K medoids Loss for k = 7
+Average Loss = 19.296, Confidence Interval = (19.296, 19.296)
+Running K medoids Loss for k = 8
+Average Loss = 19.159, Confidence Interval = (19.159, 19.159)
+Running K medoids Loss for k = 9
+Average Loss = 18.984, Confidence Interval = (18.984, 18.984)
+Running K medoids Loss for k = 10
+Average Loss = 18.673, Confidence Interval = (18.673, 18.673)
+Running K medoids loss method for Dataset 2
+Running K medoids Loss for k = 2
+Average Loss = 496.794, Confidence Interval = (496.794, 496.794)
+Running K medoids Loss for k = 3
+Average Loss = 352.596, Confidence Interval = (352.596, 352.596)
+Running K medoids Loss for k = 4
+Average Loss = 305.870, Confidence Interval = (305.87, 305.87)
+Running K medoids Loss for k = 5
+Average Loss = 299.963, Confidence Interval = (299.963, 299.963)
+Running K medoids Loss for k = 6
+Average Loss = 281.180, Confidence Interval = (281.18, 281.18)
+Running K medoids Loss for k = 7
+Average Loss = 275.242, Confidence Interval = (275.242, 275.242)
+Running K medoids Loss for k = 8
+Average Loss = 265.805, Confidence Interval = (265.805, 265.805)
+Running K medoids Loss for k = 9
+Average Loss = 256.511, Confidence Interval = (256.511, 256.511)
+Running K medoids Loss for k = 10
+Average Loss = 247.547, Confidence Interval = (247.547, 247.547)
+Running K medoids Silhouette score method for Dataset 1
+Running K medoids Silhouette score for k = 2
+Average Silhouette Score = 0.300, Confidence Interval = (0.3, 0.3)
+Running K medoids Silhouette score for k = 3
+Average Silhouette Score = 0.393, Confidence Interval = (0.393, 0.393)
+Running K medoids Silhouette score for k = 4
+Average Silhouette Score = 0.507, Confidence Interval = (0.507, 0.507)
+Running K medoids Silhouette score for k = 5
+Average Silhouette Score = 0.627, Confidence Interval = (0.627, 0.627)
+Running K medoids Silhouette score for k = 6
+Average Silhouette Score = 0.781, Confidence Interval = (0.781, 0.781)
+Running K medoids Silhouette score for k = 7
+Average Silhouette Score = 0.656, Confidence Interval = (0.656, 0.656)
+Running K medoids Silhouette score for k = 8
+Average Silhouette Score = 0.530, Confidence Interval = (0.53, 0.53)
+Running K medoids Silhouette score for k = 9
+Average Silhouette Score = 0.529, Confidence Interval = (0.529, 0.529)
+Running K medoids Silhouette score for k = 10
+Average Silhouette Score = 0.530, Confidence Interval = (0.53, 0.53)
+Running K medoids Silhouette score method for Dataset 2
+Running K medoids Silhouette score for k = 2
+Average Silhouette Score = 0.064, Confidence Interval = (0.064, 0.064)
+Running K medoids Silhouette score for k = 3
+Average Silhouette Score = 0.096, Confidence Interval = (0.096, 0.096)
+Running K medoids Silhouette score for k = 4
+Average Silhouette Score = 0.131, Confidence Interval = (0.131, 0.131)
+Running K medoids Silhouette score for k = 5
+Average Silhouette Score = 0.097, Confidence Interval = (0.097, 0.097)
+Running K medoids Silhouette score for k = 6
+Average Silhouette Score = 0.087, Confidence Interval = (0.087, 0.087)
+Running K medoids Silhouette score for k = 7
+Average Silhouette Score = 0.082, Confidence Interval = (0.082, 0.082)
+Running K medoids Silhouette score for k = 8
+Average Silhouette Score = 0.086, Confidence Interval = (0.086, 0.086)
+Running K medoids Silhouette score for k = 9
+Average Silhouette Score = 0.096, Confidence Interval = (0.096, 0.096)
+Running K medoids Silhouette score for k = 10
+Average Silhouette Score = 0.097, Confidence Interval = (0.097, 0.097)

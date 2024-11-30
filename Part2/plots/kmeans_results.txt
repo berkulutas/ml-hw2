@@ -1,0 +1,76 @@
+Running K means loss method for Dataset 1
+Running K means Loss for k = 2
+Average Loss = 16873.235, Confidence Interval = (16873.235, 16873.235)
+Running K means Loss for k = 3
+Average Loss = 12211.566, Confidence Interval = (12207.469, 12215.662)
+Running K means Loss for k = 4
+Average Loss = 7645.71, Confidence Interval = (7607.39, 7684.029)
+Running K means Loss for k = 5
+Average Loss = 3950.311, Confidence Interval = (3950.311, 3950.311)
+Running K means Loss for k = 6
+Average Loss = 1010.421, Confidence Interval = (1010.421, 1010.421)
+Running K means Loss for k = 7
+Average Loss = 997.093, Confidence Interval = (996.85, 997.336)
+Running K means Loss for k = 8
+Average Loss = 984.508, Confidence Interval = (984.09, 984.927)
+Running K means Loss for k = 9
+Average Loss = 972.444, Confidence Interval = (971.894, 972.994)
+Running K means Loss for k = 10
+Average Loss = 962.101, Confidence Interval = (961.416, 962.786)
+Running K means loss method for Dataset 2
+Running K means Loss for k = 2
+Average Loss = 26007.758, Confidence Interval = (26007.758, 26007.758)
+Running K means Loss for k = 3
+Average Loss = 22994.018, Confidence Interval = (22994.018, 22994.018)
+Running K means Loss for k = 4
+Average Loss = 21459.457, Confidence Interval = (21459.457, 21459.457)
+Running K means Loss for k = 5
+Average Loss = 20154.096, Confidence Interval = (20153.725, 20154.467)
+Running K means Loss for k = 6
+Average Loss = 19357.524, Confidence Interval = (19356.116, 19358.932)
+Running K means Loss for k = 7
+Average Loss = 18642.263, Confidence Interval = (18639.382, 18645.145)
+Running K means Loss for k = 8
+Average Loss = 18163.244, Confidence Interval = (18156.43, 18170.058)
+Running K means Loss for k = 9
+Average Loss = 17737.948, Confidence Interval = (17729.919, 17745.978)
+Running K means Loss for k = 10
+Average Loss = 17299.473, Confidence Interval = (17284.812, 17314.133)
+Running K means Silhouette score method for Dataset 1
+Running K means Silhouette score for k = 2
+Average Silhouette Score = 0.348, Confidence Interval = (0.348, 0.348)
+Running K means Silhouette score for k = 3
+Average Silhouette Score = 0.442, Confidence Interval = (0.442, 0.442)
+Running K means Silhouette score for k = 4
+Average Silhouette Score = 0.566, Confidence Interval = (0.566, 0.566)
+Running K means Silhouette score for k = 5
+Average Silhouette Score = 0.672, Confidence Interval = (0.671, 0.673)
+Running K means Silhouette score for k = 6
+Average Silhouette Score = 0.781, Confidence Interval = (0.781, 0.781)
+Running K means Silhouette score for k = 7
+Average Silhouette Score = 0.666, Confidence Interval = (0.661, 0.67)
+Running K means Silhouette score for k = 8
+Average Silhouette Score = 0.635, Confidence Interval = (0.606, 0.663)
+Running K means Silhouette score for k = 9
+Average Silhouette Score = 0.539, Confidence Interval = (0.537, 0.54)
+Running K means Silhouette score for k = 10
+Average Silhouette Score = 0.480, Confidence Interval = (0.444, 0.515)
+Running K means Silhouette score method for Dataset 2
+Running K means Silhouette score for k = 2
+Average Silhouette Score = 0.205, Confidence Interval = (0.205, 0.205)
+Running K means Silhouette score for k = 3
+Average Silhouette Score = 0.183, Confidence Interval = (0.176, 0.19)
+Running K means Silhouette score for k = 4
+Average Silhouette Score = 0.174, Confidence Interval = (0.174, 0.174)
+Running K means Silhouette score for k = 5
+Average Silhouette Score = 0.171, Confidence Interval = (0.17, 0.172)
+Running K means Silhouette score for k = 6
+Average Silhouette Score = 0.158, Confidence Interval = (0.15, 0.167)
+Running K means Silhouette score for k = 7
+Average Silhouette Score = 0.161, Confidence Interval = (0.156, 0.166)
+Running K means Silhouette score for k = 8
+Average Silhouette Score = 0.146, Confidence Interval = (0.14, 0.151)
+Running K means Silhouette score for k = 9
+Average Silhouette Score = 0.140, Confidence Interval = (0.138, 0.141)
+Running K means Silhouette score for k = 10
+Average Silhouette Score = 0.139, Confidence Interval = (0.138, 0.14)
