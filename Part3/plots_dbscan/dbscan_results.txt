@@ -1,0 +1,137 @@
+Testing DBSCAN with multiple configurations...
+testing DBSCAN (eps=13.00, min_samples=2, metric=euclidean
+DBSCAN (eps=13.00, min_samples=2, metric=euclidean, silhouette score=-0.0391), unique labels count: 7
+testing DBSCAN (eps=13.00, min_samples=5, metric=euclidean
+DBSCAN (eps=13.00, min_samples=5, metric=euclidean, silhouette score=0.0992), unique labels count: 2
+testing DBSCAN (eps=13.00, min_samples=10, metric=euclidean
+DBSCAN (eps=13.00, min_samples=10, metric=euclidean, silhouette score=0.0996), unique labels count: 2
+testing DBSCAN (eps=13.00, min_samples=15, metric=euclidean
+DBSCAN (eps=13.00, min_samples=15, metric=euclidean, silhouette score=0.0992), unique labels count: 2
+testing DBSCAN (eps=13.00, min_samples=30, metric=euclidean
+DBSCAN (eps=13.00, min_samples=30, metric=euclidean, silhouette score=0.1001), unique labels count: 2
+testing DBSCAN (eps=14.00, min_samples=2, metric=euclidean
+DBSCAN (eps=14.00, min_samples=2, metric=euclidean, silhouette score=0.0925), unique labels count: 3
+testing DBSCAN (eps=14.00, min_samples=5, metric=euclidean
+DBSCAN (eps=14.00, min_samples=5, metric=euclidean, silhouette score=0.1398), unique labels count: 2
+testing DBSCAN (eps=14.00, min_samples=10, metric=euclidean
+DBSCAN (eps=14.00, min_samples=10, metric=euclidean, silhouette score=0.1404), unique labels count: 2
+testing DBSCAN (eps=14.00, min_samples=15, metric=euclidean
+DBSCAN (eps=14.00, min_samples=15, metric=euclidean, silhouette score=0.1404), unique labels count: 2
+testing DBSCAN (eps=14.00, min_samples=30, metric=euclidean
+DBSCAN (eps=14.00, min_samples=30, metric=euclidean, silhouette score=0.1405), unique labels count: 2
+testing DBSCAN (eps=15.00, min_samples=2, metric=euclidean
+DBSCAN (eps=15.00, min_samples=2, metric=euclidean, silhouette score=0.1720), unique labels count: 2
+testing DBSCAN (eps=15.00, min_samples=5, metric=euclidean
+DBSCAN (eps=15.00, min_samples=5, metric=euclidean, silhouette score=0.1717), unique labels count: 2
+testing DBSCAN (eps=15.00, min_samples=10, metric=euclidean
+DBSCAN (eps=15.00, min_samples=10, metric=euclidean, silhouette score=0.1717), unique labels count: 2
+testing DBSCAN (eps=15.00, min_samples=15, metric=euclidean
+DBSCAN (eps=15.00, min_samples=15, metric=euclidean, silhouette score=0.1713), unique labels count: 2
+testing DBSCAN (eps=15.00, min_samples=30, metric=euclidean
+DBSCAN (eps=15.00, min_samples=30, metric=euclidean, silhouette score=0.1713), unique labels count: 2
+testing DBSCAN (eps=16.00, min_samples=2, metric=euclidean
+DBSCAN (eps=16.00, min_samples=2, metric=euclidean, silhouette score=0.1934), unique labels count: 2
+testing DBSCAN (eps=16.00, min_samples=5, metric=euclidean
+DBSCAN (eps=16.00, min_samples=5, metric=euclidean, silhouette score=0.1934), unique labels count: 2
+testing DBSCAN (eps=16.00, min_samples=10, metric=euclidean
+DBSCAN (eps=16.00, min_samples=10, metric=euclidean, silhouette score=0.1934), unique labels count: 2
+testing DBSCAN (eps=16.00, min_samples=15, metric=euclidean
+DBSCAN (eps=16.00, min_samples=15, metric=euclidean, silhouette score=0.1934), unique labels count: 2
+testing DBSCAN (eps=16.00, min_samples=30, metric=euclidean
+DBSCAN (eps=16.00, min_samples=30, metric=euclidean, silhouette score=0.1934), unique labels count: 2
+testing DBSCAN (eps=17.00, min_samples=2, metric=euclidean
+DBSCAN (eps=17.00, min_samples=2, metric=euclidean, silhouette score=0.2339), unique labels count: 2
+testing DBSCAN (eps=17.00, min_samples=5, metric=euclidean
+DBSCAN (eps=17.00, min_samples=5, metric=euclidean, silhouette score=0.2339), unique labels count: 2
+testing DBSCAN (eps=17.00, min_samples=10, metric=euclidean
+DBSCAN (eps=17.00, min_samples=10, metric=euclidean, silhouette score=0.2339), unique labels count: 2
+testing DBSCAN (eps=17.00, min_samples=15, metric=euclidean
+DBSCAN (eps=17.00, min_samples=15, metric=euclidean, silhouette score=0.2339), unique labels count: 2
+testing DBSCAN (eps=17.00, min_samples=30, metric=euclidean
+DBSCAN (eps=17.00, min_samples=30, metric=euclidean, silhouette score=0.2339), unique labels count: 2
+testing DBSCAN (eps=18.00, min_samples=2, metric=euclidean
+DBSCAN (eps=18.00, min_samples=2, metric=euclidean, silhouette score=0.2582), unique labels count: 2
+testing DBSCAN (eps=18.00, min_samples=5, metric=euclidean
+DBSCAN (eps=18.00, min_samples=5, metric=euclidean, silhouette score=0.2582), unique labels count: 2
+testing DBSCAN (eps=18.00, min_samples=10, metric=euclidean
+DBSCAN (eps=18.00, min_samples=10, metric=euclidean, silhouette score=0.2582), unique labels count: 2
+testing DBSCAN (eps=18.00, min_samples=15, metric=euclidean
+DBSCAN (eps=18.00, min_samples=15, metric=euclidean, silhouette score=0.2582), unique labels count: 2
+testing DBSCAN (eps=18.00, min_samples=30, metric=euclidean
+DBSCAN (eps=18.00, min_samples=30, metric=euclidean, silhouette score=0.2582), unique labels count: 2
+testing DBSCAN (eps=19.00, min_samples=2, metric=euclidean
+testing DBSCAN (eps=19.00, min_samples=5, metric=euclidean
+testing DBSCAN (eps=19.00, min_samples=10, metric=euclidean
+testing DBSCAN (eps=19.00, min_samples=15, metric=euclidean
+testing DBSCAN (eps=19.00, min_samples=30, metric=euclidean
+testing DBSCAN (eps=20.00, min_samples=2, metric=euclidean
+testing DBSCAN (eps=20.00, min_samples=5, metric=euclidean
+testing DBSCAN (eps=20.00, min_samples=10, metric=euclidean
+testing DBSCAN (eps=20.00, min_samples=15, metric=euclidean
+testing DBSCAN (eps=20.00, min_samples=30, metric=euclidean
+testing DBSCAN (eps=0.10, min_samples=2, metric=cosine
+DBSCAN (eps=0.10, min_samples=2, metric=cosine, silhouette score=0.0779), unique labels count: 4
+testing DBSCAN (eps=0.10, min_samples=5, metric=cosine
+DBSCAN (eps=0.10, min_samples=5, metric=cosine, silhouette score=0.1177), unique labels count: 2
+testing DBSCAN (eps=0.10, min_samples=10, metric=cosine
+DBSCAN (eps=0.10, min_samples=10, metric=cosine, silhouette score=0.1177), unique labels count: 2
+testing DBSCAN (eps=0.10, min_samples=15, metric=cosine
+DBSCAN (eps=0.10, min_samples=15, metric=cosine, silhouette score=0.1186), unique labels count: 2
+testing DBSCAN (eps=0.10, min_samples=30, metric=cosine
+DBSCAN (eps=0.10, min_samples=30, metric=cosine, silhouette score=0.1188), unique labels count: 2
+testing DBSCAN (eps=0.12, min_samples=2, metric=cosine
+DBSCAN (eps=0.12, min_samples=2, metric=cosine, silhouette score=0.1329), unique labels count: 3
+testing DBSCAN (eps=0.12, min_samples=5, metric=cosine
+DBSCAN (eps=0.12, min_samples=5, metric=cosine, silhouette score=0.1441), unique labels count: 2
+testing DBSCAN (eps=0.12, min_samples=10, metric=cosine
+DBSCAN (eps=0.12, min_samples=10, metric=cosine, silhouette score=0.1446), unique labels count: 2
+testing DBSCAN (eps=0.12, min_samples=15, metric=cosine
+DBSCAN (eps=0.12, min_samples=15, metric=cosine, silhouette score=0.1446), unique labels count: 2
+testing DBSCAN (eps=0.12, min_samples=30, metric=cosine
+DBSCAN (eps=0.12, min_samples=30, metric=cosine, silhouette score=0.1455), unique labels count: 2
+testing DBSCAN (eps=0.14, min_samples=2, metric=cosine
+DBSCAN (eps=0.14, min_samples=2, metric=cosine, silhouette score=0.1371), unique labels count: 4
+testing DBSCAN (eps=0.14, min_samples=5, metric=cosine
+DBSCAN (eps=0.14, min_samples=5, metric=cosine, silhouette score=0.1641), unique labels count: 2
+testing DBSCAN (eps=0.14, min_samples=10, metric=cosine
+DBSCAN (eps=0.14, min_samples=10, metric=cosine, silhouette score=0.1648), unique labels count: 2
+testing DBSCAN (eps=0.14, min_samples=15, metric=cosine
+DBSCAN (eps=0.14, min_samples=15, metric=cosine, silhouette score=0.1654), unique labels count: 2
+testing DBSCAN (eps=0.14, min_samples=30, metric=cosine
+DBSCAN (eps=0.14, min_samples=30, metric=cosine, silhouette score=0.1660), unique labels count: 2
+testing DBSCAN (eps=0.16, min_samples=2, metric=cosine
+DBSCAN (eps=0.16, min_samples=2, metric=cosine, silhouette score=0.1489), unique labels count: 4
+testing DBSCAN (eps=0.16, min_samples=5, metric=cosine
+DBSCAN (eps=0.16, min_samples=5, metric=cosine, silhouette score=0.1927), unique labels count: 2
+testing DBSCAN (eps=0.16, min_samples=10, metric=cosine
+DBSCAN (eps=0.16, min_samples=10, metric=cosine, silhouette score=0.1927), unique labels count: 2
+testing DBSCAN (eps=0.16, min_samples=15, metric=cosine
+DBSCAN (eps=0.16, min_samples=15, metric=cosine, silhouette score=0.1927), unique labels count: 2
+testing DBSCAN (eps=0.16, min_samples=30, metric=cosine
+DBSCAN (eps=0.16, min_samples=30, metric=cosine, silhouette score=0.1929), unique labels count: 2
+testing DBSCAN (eps=0.18, min_samples=2, metric=cosine
+DBSCAN (eps=0.18, min_samples=2, metric=cosine, silhouette score=0.1527), unique labels count: 4
+testing DBSCAN (eps=0.18, min_samples=5, metric=cosine
+DBSCAN (eps=0.18, min_samples=5, metric=cosine, silhouette score=0.2177), unique labels count: 2
+testing DBSCAN (eps=0.18, min_samples=10, metric=cosine
+DBSCAN (eps=0.18, min_samples=10, metric=cosine, silhouette score=0.2177), unique labels count: 2
+testing DBSCAN (eps=0.18, min_samples=15, metric=cosine
+DBSCAN (eps=0.18, min_samples=15, metric=cosine, silhouette score=0.2177), unique labels count: 2
+testing DBSCAN (eps=0.18, min_samples=30, metric=cosine
+DBSCAN (eps=0.18, min_samples=30, metric=cosine, silhouette score=0.2177), unique labels count: 2
+testing DBSCAN (eps=0.20, min_samples=2, metric=cosine
+DBSCAN (eps=0.20, min_samples=2, metric=cosine, silhouette score=0.1523), unique labels count: 4
+testing DBSCAN (eps=0.20, min_samples=5, metric=cosine
+DBSCAN (eps=0.20, min_samples=5, metric=cosine, silhouette score=0.2206), unique labels count: 2
+testing DBSCAN (eps=0.20, min_samples=10, metric=cosine
+DBSCAN (eps=0.20, min_samples=10, metric=cosine, silhouette score=0.2206), unique labels count: 2
+testing DBSCAN (eps=0.20, min_samples=15, metric=cosine
+DBSCAN (eps=0.20, min_samples=15, metric=cosine, silhouette score=0.2206), unique labels count: 2
+testing DBSCAN (eps=0.20, min_samples=30, metric=cosine
+DBSCAN (eps=0.20, min_samples=30, metric=cosine, silhouette score=0.2206), unique labels count: 2
+
+Best 4 configurations for DBSCAN:
+Rank 1: eps=18.00, min_samples=2, metric=euclidean, silhouette score=0.2582, K=2
+Rank 2: eps=18.00, min_samples=5, metric=euclidean, silhouette score=0.2582, K=2
+Rank 3: eps=18.00, min_samples=10, metric=euclidean, silhouette score=0.2582, K=2
+Rank 4: eps=18.00, min_samples=15, metric=euclidean, silhouette score=0.2582, K=2
