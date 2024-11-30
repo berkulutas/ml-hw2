@@ -9,11 +9,7 @@ from sklearn.metrics import silhouette_score
 dataset1 = pickle.load(open("../datasets/part2_dataset_1.data", "rb"))
 dataset2 = pickle.load(open("../datasets/part2_dataset_2.data", "rb"))
 
-# TODO remove old dataset
-# dataset1 = pickle.load(open("../data2023/part2_dataset_1.data", "rb"))
-# dataset2 = pickle.load(open("../data2023/part2_dataset_2.data", "rb"))
-
-TIMES = 3 # TODO make it 10
+TIMES = 10
 
 def calc_confidence_interval(data):
     mean = np.mean(data)
@@ -86,7 +82,7 @@ def calc_silhouette_score(dataset, k_range):
 
         # report results
         # TODO better reporting to a csv file
-        print(f"Average Silhouette Score = {round(avg_score,3)}, Confidence Interval = {round(float(conf_int[0]),3), round(float(conf_int[1]),3)}")
+        print(f"Average Silhouette Score = {avg_score:.3f}, Confidence Interval = {round(float(conf_int[0]),3), round(float(conf_int[1]),3)}")
 
     return avg_scores
 
