@@ -1,0 +1,9 @@
+DBSCAN on PCA - Silhouette Score: -0.32
+HAC on PCA - Silhouette Score: 0.29
+KMeans on PCA - Silhouette Score: 0.37
+DBSCAN on TSNE perplexity=30 - Silhouette Score: -0.61
+HAC on TSNE perplexity=30 - Silhouette Score: 0.38
+KMeans on TSNE perplexity=30 - Silhouette Score: 0.42
+DBSCAN on UMAP n_neighbors=15 euclidean - Silhouette Score: -1.00
+HAC on UMAP n_neighbors=15 euclidean - Silhouette Score: 0.35
+KMeans on UMAP n_neighbors=15 euclidean - Silhouette Score: 0.44
