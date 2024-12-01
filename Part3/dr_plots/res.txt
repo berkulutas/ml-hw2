@@ -1,0 +1,63 @@
+KMeans on TSNE perplexity=30 with 2 clusters - Silhouette Score: 0.48
+HAC on TSNE perplexity=30 with 2 clusters - Silhouette Score: 0.47
+KMeans on UMAP n_neighbors=5 euclidean with 2 clusters - Silhouette Score: 0.47
+KMeans on UMAP n_neighbors=15 euclidean with 2 clusters - Silhouette Score: 0.47
+KMeans on TSNE perplexity=50 with 2 clusters - Silhouette Score: 0.46
+KMeans on UMAP n_neighbors=15 cosine with 2 clusters - Silhouette Score: 0.44
+KMeans on UMAP n_neighbors=15 euclidean with 4 clusters - Silhouette Score: 0.44
+KMeans on TSNE perplexity=30 with 3 clusters - Silhouette Score: 0.43
+KMeans on UMAP n_neighbors=5 cosine with 2 clusters - Silhouette Score: 0.43
+KMeans on TSNE perplexity=50 with 3 clusters - Silhouette Score: 0.43
+KMeans on UMAP n_neighbors=5 euclidean with 4 clusters - Silhouette Score: 0.43
+KMeans on UMAP n_neighbors=5 cosine with 4 clusters - Silhouette Score: 0.43
+HAC on UMAP n_neighbors=15 euclidean with 2 clusters - Silhouette Score: 0.42
+HAC on UMAP n_neighbors=15 cosine with 2 clusters - Silhouette Score: 0.42
+KMeans on TSNE perplexity=50 with 4 clusters - Silhouette Score: 0.42
+KMeans on TSNE perplexity=30 with 4 clusters - Silhouette Score: 0.42
+KMeans on UMAP n_neighbors=15 euclidean with 5 clusters - Silhouette Score: 0.41
+KMeans on TSNE perplexity=30 with 5 clusters - Silhouette Score: 0.41
+HAC on TSNE perplexity=50 with 2 clusters - Silhouette Score: 0.41
+KMeans on TSNE perplexity=50 with 5 clusters - Silhouette Score: 0.41
+HAC on UMAP n_neighbors=5 euclidean with 2 clusters - Silhouette Score: 0.41
+KMeans on UMAP n_neighbors=5 euclidean with 5 clusters - Silhouette Score: 0.41
+KMeans on UMAP n_neighbors=15 cosine with 3 clusters - Silhouette Score: 0.40
+HAC on UMAP n_neighbors=15 euclidean with 4 clusters - Silhouette Score: 0.40
+HAC on UMAP n_neighbors=5 cosine with 2 clusters - Silhouette Score: 0.40
+KMeans on UMAP n_neighbors=5 cosine with 5 clusters - Silhouette Score: 0.39
+KMeans on UMAP n_neighbors=15 cosine with 5 clusters - Silhouette Score: 0.39
+KMeans on UMAP n_neighbors=15 cosine with 4 clusters - Silhouette Score: 0.38
+KMeans on UMAP n_neighbors=5 cosine with 3 clusters - Silhouette Score: 0.38
+HAC on TSNE perplexity=30 with 3 clusters - Silhouette Score: 0.38
+KMeans on PCA with 2 clusters - Silhouette Score: 0.38
+HAC on UMAP n_neighbors=5 euclidean with 5 clusters - Silhouette Score: 0.37
+HAC on UMAP n_neighbors=5 cosine with 4 clusters - Silhouette Score: 0.37
+KMeans on PCA with 4 clusters - Silhouette Score: 0.37
+KMeans on UMAP n_neighbors=5 euclidean with 3 clusters - Silhouette Score: 0.37
+KMeans on UMAP n_neighbors=15 euclidean with 3 clusters - Silhouette Score: 0.37
+KMeans on PCA with 3 clusters - Silhouette Score: 0.36
+HAC on UMAP n_neighbors=5 euclidean with 4 clusters - Silhouette Score: 0.36
+HAC on UMAP n_neighbors=15 euclidean with 5 clusters - Silhouette Score: 0.35
+HAC on TSNE perplexity=50 with 3 clusters - Silhouette Score: 0.35
+HAC on TSNE perplexity=50 with 4 clusters - Silhouette Score: 0.34
+KMeans on PCA with 5 clusters - Silhouette Score: 0.34
+HAC on UMAP n_neighbors=5 cosine with 3 clusters - Silhouette Score: 0.34
+HAC on UMAP n_neighbors=15 euclidean with 3 clusters - Silhouette Score: 0.34
+HAC on PCA with 3 clusters - Silhouette Score: 0.33
+HAC on PCA with 2 clusters - Silhouette Score: 0.32
+HAC on TSNE perplexity=50 with 5 clusters - Silhouette Score: 0.32
+HAC on UMAP n_neighbors=5 cosine with 5 clusters - Silhouette Score: 0.32
+HAC on UMAP n_neighbors=15 cosine with 3 clusters - Silhouette Score: 0.32
+HAC on UMAP n_neighbors=5 euclidean with 3 clusters - Silhouette Score: 0.32
+HAC on UMAP n_neighbors=15 cosine with 4 clusters - Silhouette Score: 0.31
+HAC on TSNE perplexity=30 with 4 clusters - Silhouette Score: 0.31
+HAC on UMAP n_neighbors=15 cosine with 5 clusters - Silhouette Score: 0.30
+HAC on PCA with 4 clusters - Silhouette Score: 0.29
+HAC on TSNE perplexity=30 with 5 clusters - Silhouette Score: 0.29
+HAC on PCA with 5 clusters - Silhouette Score: 0.28
+DBSCAN on TSNE perplexity=30 with -1 clusters - Silhouette Score: 0.15
+DBSCAN on PCA with -1 clusters - Silhouette Score: -0.32
+DBSCAN on TSNE perplexity=50 with -1 clusters - Silhouette Score: -0.57
+DBSCAN on UMAP n_neighbors=15 euclidean with -1 clusters - Silhouette Score: -1.00
+DBSCAN on UMAP n_neighbors=5 euclidean with -1 clusters - Silhouette Score: -1.00
+DBSCAN on UMAP n_neighbors=15 cosine with -1 clusters - Silhouette Score: -1.00
+DBSCAN on UMAP n_neighbors=5 cosine with -1 clusters - Silhouette Score: -1.00
